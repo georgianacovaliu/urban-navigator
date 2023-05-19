@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/countriesFragment"
+        android:title="@string/countries"
+        android:icon="@drawable/ic_countries"/>
+
+    <item android:id="@+id/favoritesFragment"
+        android:title="@string/favorites"
+        android:icon="@drawable/ic_star"/>
+
+    <item android:id="@+id/discoverFragment"
+        android:title="@string/discover"
+        android:icon="@drawable/ic_random_destination"/>
+</menu>
