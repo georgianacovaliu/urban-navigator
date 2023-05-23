@@ -5,14 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.acs.urbannavigator.models.CountryItem
+import com.acs.urbannavigator.models.CityItem
 
-class CountriesAdapter(private val mList: List<CountryItem>):RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
+class CitiesAdapter(private val mList: List<CityItem>):RecyclerView.Adapter<CitiesAdapter.ViewHolder>() {
 
-    var onItemClick : ((CountryItem) -> Unit)? = null
+    var onItemClick : ((CityItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.countries_row_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.cities_row_layout, parent, false)
         return ViewHolder(view)
     }
 
@@ -33,8 +33,7 @@ class CountriesAdapter(private val mList: List<CountryItem>):RecyclerView.Adapte
         val textView: TextView
 
         init {
-            // Define click listener for the ViewHolder's View
-            textView = ItemView.findViewById(R.id.countryTextView)
+            textView = ItemView.findViewById(R.id.cityTextView)
         }
     }
 }

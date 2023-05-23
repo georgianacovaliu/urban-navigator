@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/countriesFragment"
         android:name="com.acs.urbannavigator.CountriesFragment"
-        android:label="fragment_countries"
+        android:label="Countries"
         tools:layout="@layout/fragment_countries" >
         <action
             android:id="@+id/action_countriesFragment_to_favoritesFragment"
@@ -16,11 +16,14 @@
         <action
             android:id="@+id/action_countriesFragment_to_discoverFragment"
             app:destination="@id/discoverFragment" />
+        <action
+            android:id="@+id/action_countriesFragment_to_citiesFragment"
+            app:destination="@id/citiesFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.acs.urbannavigator.FavoritesFragment"
-        android:label="fragment_favorites"
+        android:label="Favorites"
         tools:layout="@layout/fragment_favorites" >
         <action
             android:id="@+id/action_favoritesFragment_to_discoverFragment"
@@ -29,6 +32,11 @@
     <fragment
         android:id="@+id/discoverFragment"
         android:name="com.acs.urbannavigator.DiscoverFragment"
-        android:label="fragment_discover"
+        android:label="Discover"
         tools:layout="@layout/fragment_discover" />
+    <fragment
+        android:id="@+id/citiesFragment"
+        android:name="com.acs.urbannavigator.CitiesFragment"
+        android:label="Cities"
+        tools:layout="@layout/fragment_cities" />
 </navigation>

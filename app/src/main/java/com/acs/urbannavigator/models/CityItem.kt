@@ -1,9 +1,9 @@
-package com.acs.urbannavigator
+package com.acs.urbannavigator.models
 
 
 import com.google.gson.annotations.SerializedName
 
-data class CountryItem(
+data class CityItem(
     @SerializedName("status")
     val status: String,
     @SerializedName("title")

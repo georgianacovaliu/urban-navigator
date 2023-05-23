@@ -7,8 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.acs.urbannavigator.data.ServiceBuilder
+import com.acs.urbannavigator.data.ServiceInterface
 import com.acs.urbannavigator.databinding.FragmentCountriesBinding
+import com.acs.urbannavigator.models.Country
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,14 +24,11 @@ import retrofit2.Response
 class CountriesFragment : Fragment() {
 
     private lateinit var binding: FragmentCountriesBinding
-//    private val _binding get() = binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        //val view = inflater.inflate(R.layout.fragment_countries, container, false)
         binding = FragmentCountriesBinding.inflate(inflater, container, false)
         getAllCountries()
 
@@ -31,25 +36,39 @@ class CountriesFragment : Fragment() {
     }
 
     private fun getAllCountries() {
-        val retrofit = ServiceBuilder.buildService(ServiceInterface::class.java)
+        val retrofit = ServiceBuilder.getInstance()
 
-        retrofit.getAllCountries().enqueue(object : Callback<Country>{
+        retrofit.getAllCountries("ro").enqueue(object : Callback<Country>{
             override fun onResponse(call: Call<Country>, response: Response<Country>) {
 
-                //to avoid null pointer exception
-                val responseBody = response.body()!!
-                Log.d("ofofof", responseBody.toString())
-                var adapter = CountriesAdapter(responseBody.toList())
-                Log.d("ofofof", responseBody.toList().toString())
-                Log.d("ofofof", "yupyyyyyyyyyyyyyyyyyyy")
-                binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+                try {
+                    //to avoid null pointer exception
+                    val responseBody = response.body()!!
+                    Log.d("ofofof", responseBody.toString())
+                    var adapter = CountriesAdapter(responseBody.toList())
+                    Log.d("ofofof", responseBody.toList().toString())
+                    Log.d("ofofof", "yupyyyyyyyyyyyyyyyyyyy")
+                    binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
-                binding.recyclerview.adapter = adapter
+                    binding.shimmerFrameLayout.stopShimmer()
+                    binding.shimmerFrameLayout.visibility = View.GONE
+                    binding.recyclerview.visibility = View.VISIBLE
 
-                binding.shimmerFrameLayout.stopShimmer()
-                binding.shimmerFrameLayout.visibility = View.GONE
-                binding.recyclerview.visibility = View.VISIBLE
+                    val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.navHostFragment) as NavHostFragment
+                    val navController = navHostFragment.navController
 
+                    adapter.onItemClick = {
+                        val result = it.uuid
+                        setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+                        navController.navigate(R.id.citiesFragment)
+                    }
+
+                    binding.recyclerview.adapter = adapter
+                }
+
+                catch (ex: java.lang.Exception){
+                    ex.printStackTrace()
+                }
 
             }
 
