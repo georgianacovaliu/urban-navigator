@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/countriesFragment"
-        android:title="@string/countries"
+        android:title="@string/tari"
         android:icon="@drawable/ic_countries"/>
 
     <item android:id="@+id/favoritesFragment"
-        android:title="@string/favorites"
-        android:icon="@drawable/ic_star"/>
+        android:title="@string/favorite"
+        android:icon="@drawable/ic_heart"/>
 
     <item android:id="@+id/discoverFragment"
-        android:title="@string/discover"
-        android:icon="@drawable/ic_random_destination"/>
+        android:title="@string/descopera"
+        android:icon="@drawable/ic_map"/>
 </menu>

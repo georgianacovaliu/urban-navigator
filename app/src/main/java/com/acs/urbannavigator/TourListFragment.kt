@@ -11,79 +11,72 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.acs.urbannavigator.data.ServiceBuilder
-import com.acs.urbannavigator.databinding.FragmentCitiesBinding
+import com.acs.urbannavigator.databinding.FragmentMuseumsBinding
+import com.acs.urbannavigator.databinding.FragmentTourListBinding
+import com.acs.urbannavigator.databinding.FragmentToursBinding
 import com.acs.urbannavigator.models.City
+import com.acs.urbannavigator.models.Museum.Museum
 import com.acs.urbannavigator.models.Tour.Tour
+import com.acs.urbannavigator.models.TourList.TourList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CitiesFragment : Fragment() {
+class TourListFragment : Fragment() {
 
-    private lateinit var binding: FragmentCitiesBinding
+    private lateinit var binding: FragmentTourListBinding
     lateinit var navHostFragment : NavHostFragment
     lateinit var navController : NavController
-    var countryUuid : String = ""
+    var tourUuid : String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        getBundleCountries()
-
-//        val onBackPressedCallback = object : OnBackPressedCallback(true) {
-//            override fun handleOnBackPressed() {
-//                navController.navigate(R.id.countriesFragment)
-//            }
-//        }
-//        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+        getBundleTour()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        binding = FragmentCitiesBinding.inflate(inflater, container, false)
+        binding = FragmentTourListBinding.inflate(inflater, container, false)
 
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-        if (countryUuid != "") {
-            getCountryCities()
+        if (tourUuid != "") {
+            getTourList()
         }
     }
 
-    private fun getCountryCities() {
+    private fun getTourList() {
         val retrofit = ServiceBuilder.getInstance()
 
-        retrofit.getCountryCities(countryUuid, "ro").enqueue(object : Callback<City> {
-            override fun onResponse(call: Call<City>, response: Response<City>) {
+        retrofit.getTourList(tourUuid, "ro").enqueue(object : Callback<TourList> {
+            override fun onResponse(call: Call<TourList>, response: Response<TourList>) {
                 try {
                     val responseBody = response.body()!!
-                    Log.d("sufar", responseBody.toString())
-                    var adapter = CitiesAdapter(responseBody.toList())
+                    val adapter = TourListAdapter(responseBody.toList())
                     binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
                     binding.shimmerFrameLayout.stopShimmer()
                     binding.shimmerFrameLayout.visibility = View.GONE
                     binding.recyclerview.visibility = View.VISIBLE
 
-                    adapter.onItemClick = {
-                        val result = it.uuid
-                        setFragmentResult("cityUuidKey", bundleOf("cityUuid" to result))
-                        setFragmentResult("cityUuidKey1", bundleOf("cityUuid1" to result))
-                        navController.navigate(R.id.choiceFragment)
-                    }
+//                    adapter.onItemClick = {
+//                        val result = it.uuid
+//                        setFragmentResult("tourUuidKey", bundleOf("tourUuid" to result))
+//                        navController.navigate(R.id.tourListFragment)
+//                    }
 
                     binding.recyclerview.adapter = adapter
 
@@ -92,7 +85,8 @@ class CitiesFragment : Fragment() {
                     ex.printStackTrace()
                 }
             }
-            override fun onFailure(call: Call<City>, t: Throwable) {
+
+            override fun onFailure(call: Call<TourList>, t: Throwable) {
                 Toast.makeText(requireContext(), "Api call failed", Toast.LENGTH_SHORT).show()
             }
 
@@ -101,12 +95,12 @@ class CitiesFragment : Fragment() {
 
     }
 
-    fun getBundleCountries(){
-        setFragmentResultListener("requestKey") { requestKey, bundle ->
-            // We use a String here, but any type that can be put in a Bundle is supported.
-            var result = bundle.getString("bundleKey").toString()
-            countryUuid = result
-            getCountryCities()
+    fun getBundleTour(){
+        setFragmentResultListener("tourUuidKey") { requestKey, bundle ->
+            val result = bundle.getString("tourUuid").toString()
+
+            tourUuid = result
+            getTourList()
         }
     }
 

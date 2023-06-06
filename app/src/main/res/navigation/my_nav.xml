@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/countriesFragment"
         android:name="com.acs.urbannavigator.CountriesFragment"
-        android:label="Countries"
+        android:label="Țări"
         tools:layout="@layout/fragment_countries" >
         <action
             android:id="@+id/action_countriesFragment_to_favoritesFragment"
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.acs.urbannavigator.FavoritesFragment"
-        android:label="Favorites"
+        android:label="Favorite"
         tools:layout="@layout/fragment_favorites" >
         <action
             android:id="@+id/action_favoritesFragment_to_discoverFragment"
@@ -32,11 +32,55 @@
     <fragment
         android:id="@+id/discoverFragment"
         android:name="com.acs.urbannavigator.DiscoverFragment"
-        android:label="Discover"
+        android:label="Descoperă"
         tools:layout="@layout/fragment_discover" />
     <fragment
         android:id="@+id/citiesFragment"
         android:name="com.acs.urbannavigator.CitiesFragment"
-        android:label="Cities"
-        tools:layout="@layout/fragment_cities" />
+        android:label="Orașe"
+        tools:layout="@layout/fragment_cities" >
+        <action
+            android:id="@+id/action_citiesFragment_to_choiceFragment"
+            app:destination="@id/choiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/choiceFragment"
+        android:name="com.acs.urbannavigator.ChoiceFragment"
+        android:label="Opțiuni"
+        tools:layout="@layout/fragment_choice" >
+        <action
+            android:id="@+id/action_choiceFragment_to_museumsFragment"
+            app:destination="@id/museumsFragment" />
+        <action
+            android:id="@+id/action_choiceFragment_to_toursFragment"
+            app:destination="@id/toursFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/museumsFragment"
+        android:name="com.acs.urbannavigator.MuseumsFragment"
+        android:label="Muzee"
+        tools:layout="@layout/fragment_museums" >
+        <action
+            android:id="@+id/action_museumsFragment_to_museumDetailsFragment"
+            app:destination="@id/museumDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/toursFragment"
+        android:name="com.acs.urbannavigator.ToursFragment"
+        android:label="Trasee turistice"
+        tools:layout="@layout/fragment_tours" >
+        <action
+            android:id="@+id/action_toursFragment_to_tourListFragment"
+            app:destination="@id/tourListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/museumDetailsFragment"
+        android:name="com.acs.urbannavigator.museumDetailsFragment"
+        android:label="fragment_museum_details"
+        tools:layout="@layout/fragment_museum_details" />
+    <fragment
+        android:id="@+id/tourListFragment"
+        android:name="com.acs.urbannavigator.TourListFragment"
+        android:label="Traseu"
+        tools:layout="@layout/fragment_tour_list" />
 </navigation>

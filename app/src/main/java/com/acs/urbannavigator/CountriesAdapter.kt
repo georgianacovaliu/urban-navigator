@@ -1,11 +1,14 @@
 package com.acs.urbannavigator
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.acs.urbannavigator.models.CountryItem
+import com.squareup.picasso.Picasso
 
 class CountriesAdapter(private val mList: List<CountryItem>):RecyclerView.Adapter<CountriesAdapter.ViewHolder>() {
 
@@ -21,20 +24,25 @@ class CountriesAdapter(private val mList: List<CountryItem>):RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentCity = mList[position]
-        holder.textView.text = currentCity.title
+        val currentCountry = mList[position]
+        holder.textView.text = currentCountry.title
+
+        val imagePath = "https://flagsapi.com/" + currentCountry.countryCode.uppercase() + "/flat/64.png"
+        Picasso.get().load(imagePath).into(holder.imageView)
 
         holder.itemView.setOnClickListener {
-            onItemClick?.invoke(currentCity)
+            onItemClick?.invoke(currentCountry)
         }
     }
 
     class ViewHolder(ItemView: View): RecyclerView.ViewHolder(ItemView){
         val textView: TextView
+        val imageView: ImageView
 
         init {
             // Define click listener for the ViewHolder's View
             textView = ItemView.findViewById(R.id.countryTextView)
+            imageView = ItemView.findViewById(R.id.countryImageView)
         }
     }
 }

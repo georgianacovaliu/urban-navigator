@@ -13,7 +13,7 @@ object ServiceBuilder {
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://api.izi.travel")
         .addConverterFactory(GsonConverterFactory.create())
-        //.client(client)
+        .client(client)
         .build()
 
 

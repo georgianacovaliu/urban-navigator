@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/museum_row_cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="10dp"
+    app:strokeColor="@color/strokeColor"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cardBackgroundColor">
+
+        <ImageView
+            android:id="@+id/museum_row_imageView"
+            android:layout_width="150dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/museum_title_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/alata"
+            android:maxLines="2"
+            android:text="titlu"
+            android:textColor="@color/titleColor"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/museum_row_imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/museum_description_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="rezumat"
+            android:textColor="@color/descriptionColor"
+            app:layout_constraintEnd_toEndOf="@+id/museum_title_textView"
+            app:layout_constraintStart_toStartOf="@+id/museum_title_textView"
+            app:layout_constraintTop_toBottomOf="@+id/museum_title_textView" />
+
+        <ImageView
+            android:id="@+id/star_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/museum_row_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/museum_description_textView"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/ic_star"
+            app:tint="@color/yellow" />
+
+        <TextView
+            android:id="@+id/star_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="9.3"
+            android:textColor="@color/yellow"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/star_imageView"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@+id/star_imageView"
+            app:layout_constraintTop_toTopOf="@+id/star_imageView" />
+
+        <ImageView
+            android:id="@+id/heart_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            app:layout_constraintEnd_toEndOf="@+id/star_textView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/star_textView"
+            app:layout_constraintTop_toTopOf="@+id/star_textView"
+            app:srcCompat="@drawable/ic_heart"
+            app:tint="@color/mediumGray" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

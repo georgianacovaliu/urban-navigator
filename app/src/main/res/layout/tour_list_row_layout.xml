@@ -8,6 +8,7 @@
     android:layout_marginTop="5dp"
     android:layout_marginEnd="10dp"
     android:layout_marginBottom="5dp"
+    android:textAlignment="viewStart"
     app:cardCornerRadius="10dp"
     app:strokeColor="@color/strokeColor"
     app:strokeWidth="1dp">
@@ -15,25 +16,38 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/cardBackgroundColor">
+        android:background="@color/cardBackgroundColor"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tourListIndex"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/ic_circle"
+            android:backgroundTint="@color/purple_700"
+            android:fontFamily="@font/alata"
+            android:text="10"
+            android:textAlignment="center"
+            android:textColor="@color/lightGray"
+            android:textSize="30sp" />
 
         <ImageView
-            android:id="@+id/city_imageView"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:id="@+id/tourListImageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/city_icon"
+            android:src="@drawable/photo_placeholder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/cityTextView"
+            android:id="@+id/tourListTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="12dp"
             android:ellipsize="end"
@@ -46,7 +60,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/city_imageView"
+            app:layout_constraintStart_toEndOf="@+id/tourListImageView"
             app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>

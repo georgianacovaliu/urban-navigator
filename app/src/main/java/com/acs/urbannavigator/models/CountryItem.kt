@@ -9,5 +9,7 @@ data class CountryItem(
     @SerializedName("title")
     val title: String,
     @SerializedName("uuid")
-    val uuid: String
+    val uuid: String,
+    @SerializedName("country_code")
+    val countryCode: String
 )
