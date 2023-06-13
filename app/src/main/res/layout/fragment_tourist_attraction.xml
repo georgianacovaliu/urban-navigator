@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TouristAttractionFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/museum_row_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="478dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/strokeColor"
+        app:strokeWidth="1dp">
+
+        <ImageView
+            android:id="@+id/imagetView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_marginTop="@+id/imagetView"
+            />
+    </com.google.android.material.card.MaterialCardView>
+
+
+</FrameLayout>
