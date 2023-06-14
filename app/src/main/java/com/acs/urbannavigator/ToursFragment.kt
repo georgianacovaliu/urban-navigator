@@ -40,13 +40,13 @@ class ToursFragment : Fragment() {
 
         getBundleCities()
 
-        val onBackPressedCallback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                setFragmentResult("cityUuidKey1", bundleOf("cityUuid1" to cityUuid))
-                navController.navigate(R.id.choiceFragment)
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+//        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+//            override fun handleOnBackPressed() {
+//                setFragmentResult("cityUuidKey1", bundleOf("cityUuid1" to cityUuid))
+//                navController.navigate(R.id.choiceFragment)
+//            }
+//        }
+//        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
     override fun onCreateView(
@@ -98,7 +98,6 @@ class ToursFragment : Fragment() {
             }
 
         })
-
 
     }
 

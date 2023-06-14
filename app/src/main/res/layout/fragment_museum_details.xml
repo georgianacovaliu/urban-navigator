@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.core.widget.NestedScrollView
+    tools:context=".MuseumDetailsFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Image View for the museum -->
+        <ImageView
+            android:id="@+id/museum_image"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+
+        <!-- Museum title -->
+        <TextView
+            android:id="@+id/museum_details_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/museum_image"
+            android:padding="16dp"
+            android:textColor="@color/purple_700"
+            android:text="Museum Title"
+            android:fontFamily="@font/alata"
+            android:textSize="24sp" />
+
+        <!-- Small ImageView centered and to the right of the title -->
+        <ImageView
+            android:id="@+id/small_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignTop="@+id/museum_details_title"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="173dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="37dp"
+            android:layout_marginBottom="22dp"
+            android:src="@drawable/ic_heart"
+            app:tint="@color/lightMediumGray" />
+
+        <!-- Museum description -->
+        <TextView
+            android:id="@+id/museum_details_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/museum_details_title"
+            android:padding="16dp"
+            android:text="Museum Description"
+            android:textColor="@color/darkGray"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/museum_details_exhibition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/museum_details_description"
+            android:padding="16dp"
+            android:text="Exponate"
+            android:textColor="@color/purple_700"
+            android:fontFamily="@font/alata"
+            android:textSize="18sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/museum_details_exhibition"
+            android:layout_centerInParent="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:navGraph="@navigation/my_nav" />
+
+    </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>

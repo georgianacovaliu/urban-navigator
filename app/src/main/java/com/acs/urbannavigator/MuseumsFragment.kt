@@ -7,7 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.acs.urbannavigator.data.ServiceBuilder
@@ -20,6 +24,26 @@ import retrofit2.Response
 class MuseumsFragment : Fragment() {
 
     private lateinit var binding: FragmentMuseumsBinding
+    lateinit var navHostFragment : NavHostFragment
+    lateinit var navController : NavController
+    var cityUuid : String = ""
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        navController = navHostFragment.navController
+
+        getBundleCities()
+
+//        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+//            override fun handleOnBackPressed() {
+//                setFragmentResult("cityUuidKey1", bundleOf("cityUuid1" to cityUuid))
+//                navController.navigate(R.id.choiceFragment)
+//            }
+//        }
+//        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,52 +55,57 @@ class MuseumsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (cityUuid != "") {
+            getMuseums()
+        }
+    }
+
     private fun getMuseums() {
         val retrofit = ServiceBuilder.getInstance()
 
-        setFragmentResultListener("cityUuidKey") { requestKey, bundle ->
-            // We use a String here, but any type that can be put in a Bundle is supported.
-            var cityUuid = bundle.getString("cityUuid").toString()
+        retrofit.getMuseumsAndTours(cityUuid, "ro", "museum").enqueue(object : Callback<Museum> {
+            override fun onResponse(call: Call<Museum>, response: Response<Museum>) {
 
-            retrofit.getMuseumsAndTours(cityUuid, "ro", "museum").enqueue(object : Callback<Museum> {
-                override fun onResponse(call: Call<Museum>, response: Response<Museum>) {
+                try {
+                    val responseBody = response.body()!!
+                    var adapter = MuseumsAdapter(responseBody.toList())
+                    binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
-                    //to avoid null pointer exception
-                    try {
-                        val responseBody = response.body()!!
-                        Log.d("sufar", responseBody.toString())
-                        var adapter = MuseumsAdapter(responseBody.toList())
-                        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+                    binding.shimmerFrameLayout.stopShimmer()
+                    binding.shimmerFrameLayout.visibility = View.GONE
+                    binding.recyclerview.visibility = View.VISIBLE
 
-                        binding.shimmerFrameLayout.stopShimmer()
-                        binding.shimmerFrameLayout.visibility = View.GONE
-                        binding.recyclerview.visibility = View.VISIBLE
-
-                        val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.navHostFragment) as NavHostFragment
-                        val navController = navHostFragment.navController
-
-                        adapter.onItemClick = {
-                            val result = it.uuid
-                            Log.d("muzeu", result.toString())
-//                            setFragmentResult("cityUuidKey", bundleOf("cityUuid" to result))
-//                            navController.navigate(R.id.choiceFragment)
-                        }
-
-                        binding.recyclerview.adapter = adapter
-
+                    adapter.onItemClick = {
+                        val result = it.uuid
+                        setFragmentResult("museumUuidKey", bundleOf("museumUuid" to result))
+                        navController.navigate(R.id.museumDetailsFragment)
                     }
-                    catch (ex: java.lang.Exception){
-                        ex.printStackTrace()
-                    }
+
+                    binding.recyclerview.adapter = adapter
+
                 }
 
-                override fun onFailure(call: Call<Museum>, t: Throwable) {
-                    Toast.makeText(requireContext(), "Api call failed", Toast.LENGTH_SHORT).show()
+                catch (ex: java.lang.Exception){
+                    ex.printStackTrace()
+                }
                 }
 
-            })
+            override fun onFailure(call: Call<Museum>, t: Throwable) {
+                Toast.makeText(requireContext(), "Api call failed", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    fun getBundleCities(){
+        setFragmentResultListener("cityUuidKey1") { requestKey, bundle ->
+            val result = bundle.getString("cityUuid1").toString()
+
+            cityUuid = result
+            getMuseums()
         }
-
     }
 
 }

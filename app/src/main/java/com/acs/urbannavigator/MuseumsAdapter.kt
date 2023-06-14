@@ -1,14 +1,11 @@
 package com.acs.urbannavigator
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
-import com.acs.urbannavigator.models.CountryItem
 import com.acs.urbannavigator.models.Museum.MuseumItem
 import com.squareup.picasso.Picasso
 

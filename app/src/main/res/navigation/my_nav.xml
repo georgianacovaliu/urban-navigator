@@ -59,7 +59,11 @@
         android:id="@+id/museumsFragment"
         android:name="com.acs.urbannavigator.MuseumsFragment"
         android:label="Muzee"
-        tools:layout="@layout/fragment_museums" />
+        tools:layout="@layout/fragment_museums" >
+        <action
+            android:id="@+id/action_museumsFragment_to_museumDetails"
+            app:destination="@id/museumDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/toursFragment"
         android:name="com.acs.urbannavigator.ToursFragment"
@@ -88,4 +92,9 @@
         android:name="com.acs.urbannavigator.TouristAttractionFragment"
         android:label="Obiectiv"
         tools:layout="@layout/fragment_tourist_attraction" />
+    <fragment
+        android:id="@+id/museumDetailsFragment"
+        android:name="com.acs.urbannavigator.MuseumDetailsFragment"
+        android:label="Muzeu"
+        tools:layout="@layout/fragment_museum_details" />
 </navigation>

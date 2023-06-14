@@ -3,6 +3,7 @@ package com.acs.urbannavigator.data
 import com.acs.urbannavigator.models.City
 import com.acs.urbannavigator.models.Country
 import com.acs.urbannavigator.models.Museum.Museum
+import com.acs.urbannavigator.models.MuseumDetails.MuseumDetail
 import com.acs.urbannavigator.models.Tour.Tour
 import com.acs.urbannavigator.models.TourList.TourList
 import retrofit2.Call
@@ -60,4 +61,14 @@ interface ServiceInterface {
         @Path("tourUuid") cityUuid: String,
         @Query("languages") languages: String,
     ): Call<TourList>
+
+    @Headers(
+        "Accept: application/izi-api-v1.8+json",
+        "X-IZI-API-KEY: 3760230e-274a-4c0b-a01c-a023c5efb146"
+    )
+    @GET("/mtgobjects/{museumUuid}")
+    fun getMuseumDetails(
+        @Path("museumUuid") cityUuid: String,
+        @Query("languages") languages: String,
+    ): Call<MuseumDetail>
 }
