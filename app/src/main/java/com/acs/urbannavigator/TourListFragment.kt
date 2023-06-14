@@ -1,13 +1,14 @@
 package com.acs.urbannavigator
 
+import TourListAdapter
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
@@ -15,12 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.acs.urbannavigator.data.ServiceBuilder
-import com.acs.urbannavigator.databinding.FragmentMuseumsBinding
 import com.acs.urbannavigator.databinding.FragmentTourListBinding
-import com.acs.urbannavigator.databinding.FragmentToursBinding
-import com.acs.urbannavigator.models.City
-import com.acs.urbannavigator.models.Museum.Museum
-import com.acs.urbannavigator.models.Tour.Tour
 import com.acs.urbannavigator.models.TourList.TourList
 import retrofit2.Call
 import retrofit2.Callback
@@ -60,7 +56,6 @@ class TourListFragment : Fragment() {
 
     private fun getTourList() {
         val retrofit = ServiceBuilder.getInstance()
-
         retrofit.getTourList(tourUuid, "ro").enqueue(object : Callback<TourList> {
             override fun onResponse(call: Call<TourList>, response: Response<TourList>) {
                 try {
@@ -72,11 +67,11 @@ class TourListFragment : Fragment() {
                     binding.shimmerFrameLayout.visibility = View.GONE
                     binding.recyclerview.visibility = View.VISIBLE
 
-//                    adapter.onItemClick = {
-//                        val result = it.uuid
-//                        setFragmentResult("tourUuidKey", bundleOf("tourUuid" to result))
-//                        navController.navigate(R.id.tourListFragment)
-//                    }
+                    adapter.onItemClick = {
+                        val result = it
+                        setFragmentResult("touristAttractionKey", bundleOf("touristAttraction" to result))
+                        navController.navigate(R.id.touristAttractionFragment)
+                    }
 
                     binding.recyclerview.adapter = adapter
 

@@ -20,4 +20,4 @@ data class TourListItem(
     val type: String,
     @SerializedName("uuid")
     val uuid: String
-)
+) : java.io.Serializable

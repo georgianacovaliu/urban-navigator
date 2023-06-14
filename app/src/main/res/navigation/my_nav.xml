@@ -59,11 +59,7 @@
         android:id="@+id/museumsFragment"
         android:name="com.acs.urbannavigator.MuseumsFragment"
         android:label="Muzee"
-        tools:layout="@layout/fragment_museums" >
-        <action
-            android:id="@+id/action_museumsFragment_to_museumDetailsFragment"
-            app:destination="@id/museumDetailsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_museums" />
     <fragment
         android:id="@+id/toursFragment"
         android:name="com.acs.urbannavigator.ToursFragment"
@@ -73,11 +69,6 @@
             android:id="@+id/action_toursFragment_to_tourListFragment"
             app:destination="@id/tourListFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/museumDetailsFragment"
-        android:name="com.acs.urbannavigator.museumDetailsFragment"
-        android:label="fragment_museum_details"
-        tools:layout="@layout/fragment_museum_details" />
     <fragment
         android:id="@+id/tourListFragment"
         android:name="com.acs.urbannavigator.TourListFragment"
@@ -95,6 +86,6 @@
     <fragment
         android:id="@+id/touristAttractionFragment"
         android:name="com.acs.urbannavigator.TouristAttractionFragment"
-        android:label="fragment_tourist_attraction"
+        android:label="Obiectiv"
         tools:layout="@layout/fragment_tourist_attraction" />
 </navigation>

@@ -1,37 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TouristAttractionFragment">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/museum_row_cardView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="478dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
-        app:cardCornerRadius="10dp"
-        app:strokeColor="@color/strokeColor"
-        app:strokeWidth="1dp">
+        android:layout_height="wrap_content">
 
+        <!-- Image View for the museum -->
         <ImageView
-            android:id="@+id/imagetView"
+            android:id="@+id/tourist_attraction_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
             tools:src="@tools:sample/avatars" />
 
+        <!-- Museum title -->
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+            android:id="@+id/tourist_attraction_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_marginTop="@+id/imagetView"
-            />
-    </com.google.android.material.card.MaterialCardView>
+            android:layout_below="@id/tourist_attraction_image"
+            android:padding="16dp"
+            android:textColor="@color/purple_700"
+            android:text="Museum Title"
+            android:fontFamily="@font/alata"
+            android:textSize="24sp" />
 
+        <!-- Buttons layout -->
 
-</FrameLayout>
+        <LinearLayout
+            android:id="@+id/seek_bar_layout"
+            android:layout_below="@id/tourist_attraction_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <SeekBar
+                android:id="@+id/seek_bar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:saveEnabled="false" />
+
+            <TextView
+                android:id="@+id/tv_due"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttonsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seek_bar_layout"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/pauseBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pauză" />
+
+            <Button
+                android:id="@+id/playBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Start" />
+
+            <Button
+                android:id="@+id/stopBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Stop" />
+        </LinearLayout>
+
+        <!-- Museum description -->
+        <TextView
+            android:id="@+id/tourist_attraction_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buttonsLayout"
+            android:padding="16dp"
+            android:textColor="@color/darkGray"
+            android:text="Museum Description"
+            android:textSize="16sp" />
+
+        <!-- Rest of the layout -->
+
+    </RelativeLayout>
+
+</ScrollView>

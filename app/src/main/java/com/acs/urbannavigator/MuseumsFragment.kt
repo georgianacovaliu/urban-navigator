@@ -55,11 +55,12 @@ class MuseumsFragment : Fragment() {
                         val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.navHostFragment) as NavHostFragment
                         val navController = navHostFragment.navController
 
-//                        adapter.onItemClick = {
-//                            val result = it.uuid
+                        adapter.onItemClick = {
+                            val result = it.uuid
+                            Log.d("muzeu", result.toString())
 //                            setFragmentResult("cityUuidKey", bundleOf("cityUuid" to result))
 //                            navController.navigate(R.id.choiceFragment)
-//                        }
+                        }
 
                         binding.recyclerview.adapter = adapter
 
