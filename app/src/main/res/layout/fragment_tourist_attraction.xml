@@ -26,7 +26,7 @@
             android:layout_below="@id/tourist_attraction_image"
             android:padding="16dp"
             android:textColor="@color/purple_700"
-            android:text="Museum Title"
+            android:text="Tour Title"
             android:fontFamily="@font/alata"
             android:textSize="24sp" />
         <ImageView

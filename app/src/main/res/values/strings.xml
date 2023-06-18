@@ -35,4 +35,11 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="adres_de_email">Adresă de Email</string>
+    <string name="parol">Parolă</string>
+    <string name="conecteaz_te">Conectează-te</string>
+    <string name="nu_ai_cont_nregistreaz_te">Nu ai cont? Înregistrează-te!</string>
+    <string name="repet_parola">Repetă parola</string>
+    <string name="nregistreaz_te">Înregistrează-te</string>
+    <string name="ai_deja_un_cont_conecteaz_te">Ai deja un cont? Conectează-te!</string>
 </resources>

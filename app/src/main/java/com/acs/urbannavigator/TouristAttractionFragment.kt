@@ -169,7 +169,6 @@ class TouristAttractionFragment : Fragment() {
         }
     }
 
-
 }
 // Creating an extension property to get the media player time duration in seconds
 val MediaPlayer.seconds:Int
