@@ -46,7 +46,7 @@
     <fragment
         android:id="@+id/choiceFragment"
         android:name="com.acs.urbannavigator.ChoiceFragment"
-        android:label="Opțiuni"
+        android:label="Conținut"
         tools:layout="@layout/fragment_choice" >
         <action
             android:id="@+id/action_choiceFragment_to_museumsFragment"

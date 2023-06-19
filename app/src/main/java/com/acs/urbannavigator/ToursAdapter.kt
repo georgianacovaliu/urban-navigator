@@ -31,7 +31,7 @@ class ToursAdapter(private val mList: List<TourItem>):RecyclerView.Adapter<Tours
         holder.titleTextView.text = currentTour.title
         holder.descriptionTextView.text = currentTour.summary
         holder.ratingTextView.text = currentTour.reviews.ratingAverage.toString()
-        holder.clockTextView.text = (currentTour.duration/60).toString()
+        holder.clockTextView.text = (currentTour.duration/60).toString() + "m"
 
         val imagePath = "https://media.izi.travel/" + currentTour.contentProvider.uuid + "/" +currentTour.images[0].uuid + "_480x360.jpg"
         Picasso.get().load(imagePath).into(holder.imageView)

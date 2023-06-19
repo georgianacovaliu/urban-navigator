@@ -13,9 +13,9 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/museums_cardView"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="200dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="10dp"
@@ -39,47 +39,19 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/atractii_cardView"
+            android:id="@+id/tours_cardView"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="200dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="16dp"
             app:cardCornerRadius="10dp"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/museums_cardView"
-            app:strokeColor="@color/strokeColor"
-            app:strokeWidth="1dp">
-
-            <ImageView
-                android:id="@+id/atractii_imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/tourist_attractions1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="@color/strokeColor"
-                app:strokeWidth="1dp" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/tours_cardView"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:cardCornerRadius="10dp"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/atractii_cardView"
             app:strokeColor="@color/strokeColor"
             app:strokeWidth="1dp">
 
@@ -96,37 +68,6 @@
                 app:strokeWidth="1dp" />
 
         </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/create_cardView"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:cardCornerRadius="10dp"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tours_cardView"
-            app:strokeColor="@color/strokeColor"
-            app:strokeWidth="1dp">
-
-            <ImageView
-                android:id="@+id/create_imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/create_tour1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="@color/strokeColor"
-                app:strokeWidth="1dp"/>
-
-        </com.google.android.material.card.MaterialCardView>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
