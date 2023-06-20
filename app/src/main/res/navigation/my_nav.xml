@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/countriesFragment"
-        android:name="com.acs.urbannavigator.CountriesFragment"
+        android:name="com.acs.urbannavigator.ui.fragments.CountriesFragment"
         android:label="Țări"
         tools:layout="@layout/fragment_countries" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.acs.urbannavigator.FavoritesFragment"
+        android:name="com.acs.urbannavigator.ui.fragments.FavoritesFragment"
         android:label="Favorite"
         tools:layout="@layout/fragment_favorites" >
         <action
@@ -31,12 +31,12 @@
     </fragment>
     <fragment
         android:id="@+id/discoverFragment"
-        android:name="com.acs.urbannavigator.DiscoverFragment"
+        android:name="com.acs.urbannavigator.ui.fragments.DiscoverFragment"
         android:label="Descoperă"
         tools:layout="@layout/fragment_discover" />
     <fragment
         android:id="@+id/citiesFragment"
-        android:name="com.acs.urbannavigator.CitiesFragment"
+        android:name="com.acs.urbannavigator.ui.fragments.CitiesFragment"
         android:label="Orașe"
         tools:layout="@layout/fragment_cities" >
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/choiceFragment"
-        android:name="com.acs.urbannavigator.ChoiceFragment"
+        android:name="com.acs.urbannavigator.ui.fragments.ChoiceFragment"
         android:label="Conținut"
         tools:layout="@layout/fragment_choice" >
         <action
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/museumsFragment"
-        android:name="com.acs.urbannavigator.MuseumsFragment"
+        android:name="com.acs.urbannavigator.ui.fragments.MuseumsFragment"
         android:label="Muzee"
         tools:layout="@layout/fragment_museums" >
         <action
@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/toursFragment"
-        android:name="com.acs.urbannavigator.ToursFragment"
+        android:name="com.acs.urbannavigator.ui.fragments.ToursFragment"
         android:label="Trasee turistice"
         tools:layout="@layout/fragment_tours" >
         <action
@@ -75,7 +75,7 @@
     </fragment>
     <fragment
         android:id="@+id/tourListFragment"
-        android:name="com.acs.urbannavigator.TourListFragment"
+        android:name="com.acs.urbannavigator.ui.fragments.TourListFragment"
         android:label="Traseu"
         tools:layout="@layout/fragment_tour_list" >
         <action
@@ -92,7 +92,7 @@
         tools:layout="@layout/fragment_tourist_attraction" />
     <fragment
         android:id="@+id/museumDetailsFragment"
-        android:name="com.acs.urbannavigator.MuseumDetailsFragment"
+        android:name="com.acs.urbannavigator.ui.fragments.MuseumDetailsFragment"
         android:label="Muzeu"
         tools:layout="@layout/fragment_museum_details" >
         <action
