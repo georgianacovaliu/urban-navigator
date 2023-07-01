@@ -3,7 +3,6 @@ package com.acs.urbannavigator.ui.fragments
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -15,10 +14,6 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import com.acs.urbannavigator.R
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.google.android.gms.common.api.Status
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -28,13 +23,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
-import com.google.maps.android.PolyUtil
-import org.json.JSONObject
 
 class DiscoverFragment : Fragment() {
 
@@ -46,6 +38,15 @@ class DiscoverFragment : Fragment() {
     private val REQUEST_LOCATION_PERMISSION = 1
     val padding = 170
     var apiKey = "AIzaSyBieow1_6vfq24djaOm-DV3tTnWTPQGKX4"
+    val piataromana = LatLng(44.446226, 26.097282)
+    val ateneu = LatLng(44.441251,26.097011)
+    val palat = LatLng(44.439456,26.096182)
+    val memorial = LatLng(44.438855,26.097352)
+    val calea = LatLng(44.437821,26.097588)
+    val univ = LatLng(44.436076,26.102172)
+    val tnb = LatLng (44.436415, 26.103226)
+    val latLngOrigin = LatLng(44.434426, 26.052272) // Ayala
+    val latLngDestination = LatLng(44.434596, 26.089748) // SM City
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,36 +69,50 @@ class DiscoverFragment : Fragment() {
 //            val sydney = LatLng(-34.0, 151.0)
 //            map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
 //            map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-
-            val latLngOrigin = LatLng(44.434426, 26.052272) // Ayala
-            val latLngDestination = LatLng(44.434596, 26.089748) // SM City
-            map.addMarker(MarkerOptions().position(latLngOrigin).title("Ayala"))
-            map.addMarker(MarkerOptions().position(latLngDestination).title("SM City"))
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngOrigin, 14.5f))
-
-            val path: MutableList<List<LatLng>> = ArrayList()
-            //val urlDirections = "https://maps.googleapis.com/maps/api/directions/json?origin=44.434426,26.052272&destination=44.434596,26.089748&key=AIzaSyBCitz0sxb73WYPLFIXX2QcftHAj9zt-M8"
-            val urlDirections = "https://maps.googleapis.com/maps/api/directions/json?origin=44.434426,26.052272&destination=44.429325,26.063655&waypoints=44.434596,26.089748|44.443942,26.060651&key=AIzaSyBCitz0sxb73WYPLFIXX2QcftHAj9zt-M8"
-            val directionsRequest = object : StringRequest(Request.Method.GET, urlDirections, Response.Listener<String> {
-                    response ->
-                val jsonResponse = JSONObject(response)
-                Log.d("ofofof", jsonResponse.toString())
-                // Get routes
-                val routes = jsonResponse.getJSONArray("routes")
-                val legs = routes.getJSONObject(0).getJSONArray("legs")
-                val steps = legs.getJSONObject(0).getJSONArray("steps")
-                for (i in 0 until steps.length()) {
-                    val points = steps.getJSONObject(i).getJSONObject("polyline").getString("points")
-                    path.add(PolyUtil.decode(points))
-                }
-                for (i in 0 until path.size) {
-                    map.addPolyline(PolylineOptions().addAll(path[i]).color(Color.RED))
-                }
-            }, Response.ErrorListener {
-                    _ ->
-            }){}
-            val requestQueue = Volley.newRequestQueue(requireContext())
-            requestQueue.add(directionsRequest)
+//            map.addMarker(MarkerOptions().position(piataromana).title("Ayala"))
+//            map.addMarker(MarkerOptions().position(ateneu).title("SM City"))
+//            map.addMarker(MarkerOptions().position(palat).title("SM City"))
+//            map.addMarker(MarkerOptions().position(memorial).title("SM City"))
+//            map.addMarker(MarkerOptions().position(calea).title("SM City"))
+//            map.addMarker(MarkerOptions().position(univ).title("SM City"))
+//            map.addMarker(MarkerOptions().position(tnb).title("SM City"))
+//            map.moveCamera(CameraUpdateFactory.newLatLngZoom(piataromana, 14.5f))
+//
+//            val path: MutableList<List<LatLng>> = ArrayList()
+//            val retrofit = MapsServiceBuilder.getInstance()
+//            retrofit.getRez().enqueue(object : Callback<Rez> {
+//                override fun onResponse(call: Call<Rez>, response: retrofit2.Response<Rez>) {
+//                    try {
+//                        val rez = response.body()!!
+//                        path.add(PolyUtil.decode(rez.routes[0].overviewPolyline.points))
+//                        for (i in 0 until path.size) {
+//                            googleMap.addPolyline(
+//                                PolylineOptions().addAll(path[i]).color(Color.RED)
+//                            )
+//                        }
+////                    for (j in 0 until rez.routes[0].legs.size) {
+////                        for (i in 0 until rez.routes[0].legs[j].steps.size) {
+////                            val points = rez.routes[0].legs[0].steps[i].polyline.points
+////                            path.add(PolyUtil.decode(points))
+////                        }
+////                        for (i in 0 until path.size) {
+////                            googleMap.addPolyline(
+////                                PolylineOptions().addAll(path[i]).color(Color.RED)
+////                            )
+////                        }
+////                    }
+//
+//                    }
+//                    catch (ex: java.lang.Exception){
+//                        ex.printStackTrace()
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<Rez>, t: Throwable) {
+//                    Toast.makeText(requireContext(), "Api call failed", Toast.LENGTH_SHORT).show()
+//                }
+//
+//            })
         }
 
         // Set up the AutocompleteSupportFragment

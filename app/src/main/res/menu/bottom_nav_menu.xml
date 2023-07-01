@@ -9,7 +9,7 @@
         android:title="@string/favorite"
         android:icon="@drawable/ic_heart"/>
 
-    <item android:id="@+id/discoverFragment"
+    <item android:id="@+id/mapsActivity"
         android:title="@string/descopera"
         android:icon="@drawable/ic_map"/>
 </menu>

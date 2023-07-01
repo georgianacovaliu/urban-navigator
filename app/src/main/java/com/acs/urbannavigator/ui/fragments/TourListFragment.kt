@@ -2,6 +2,7 @@ package com.acs.urbannavigator.ui.fragments
 
 import com.acs.urbannavigator.adapters.TourListAdapter
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +14,14 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import com.acs.urbannavigator.R
+import com.acs.urbannavigator.data.database.LocalDatabase
 import com.acs.urbannavigator.data.network.ServiceBuilder
 import com.acs.urbannavigator.databinding.FragmentTourListBinding
+import com.acs.urbannavigator.models.Location
 import com.acs.urbannavigator.models.tourListModel.TourList
+import com.google.android.gms.maps.model.LatLng
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,6 +32,7 @@ class TourListFragment : Fragment() {
     lateinit var navHostFragment : NavHostFragment
     lateinit var navController : NavController
     var tourUuid : String = ""
+    val directions: MutableList<Location> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +65,7 @@ class TourListFragment : Fragment() {
             override fun onResponse(call: Call<TourList>, response: Response<TourList>) {
                 try {
                     val responseBody = response.body()!!
+                    Log.d("ofofof", tourUuid)
                     val adapter = TourListAdapter(responseBody.toList())
                     binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
@@ -74,6 +81,13 @@ class TourListFragment : Fragment() {
 
                     binding.recyclerview.adapter = adapter
 
+                    binding.startTour.setOnClickListener{
+                        for (tourItem in responseBody) {
+                            directions.add(tourItem.location)
+                        }
+                        insertLocations()
+                    }
+
                 }
                 catch (ex: java.lang.Exception){
                     ex.printStackTrace()
@@ -87,6 +101,18 @@ class TourListFragment : Fragment() {
         })
 
 
+    }
+
+    fun insertLocations(){
+        val db = Room.databaseBuilder(
+            requireContext(),
+            LocalDatabase::class.java, "location"
+            ).allowMainThreadQueries().build()
+
+        val locationDAO = db.locationDao()
+
+        locationDAO.deleteAll()
+        locationDAO.insertAll(directions)
     }
 
     fun getBundleTour(){

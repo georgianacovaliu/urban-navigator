@@ -97,7 +97,8 @@
             app:layout_constraintStart_toStartOf="@+id/star_textView"
             app:layout_constraintTop_toTopOf="@+id/star_textView"
             app:srcCompat="@drawable/ic_heart"
-            app:tint="@color/mediumGray" />
+            app:tint="@color/mediumGray"
+            android:visibility="invisible"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

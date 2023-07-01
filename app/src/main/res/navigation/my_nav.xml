@@ -14,11 +14,11 @@
             android:id="@+id/action_countriesFragment_to_favoritesFragment"
             app:destination="@id/favoritesFragment" />
         <action
-            android:id="@+id/action_countriesFragment_to_discoverFragment"
-            app:destination="@id/discoverFragment" />
-        <action
             android:id="@+id/action_countriesFragment_to_citiesFragment"
             app:destination="@id/citiesFragment" />
+        <action
+            android:id="@+id/action_countriesFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -26,8 +26,8 @@
         android:label="Favorite"
         tools:layout="@layout/fragment_favorites" >
         <action
-            android:id="@+id/action_favoritesFragment_to_discoverFragment"
-            app:destination="@id/discoverFragment" />
+            android:id="@+id/action_favoritesFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
     <fragment
         android:id="@+id/discoverFragment"
@@ -81,13 +81,10 @@
         <action
             android:id="@+id/action_tourListFragment_to_touristAttractionFragment"
             app:destination="@id/touristAttractionFragment" />
-        <action
-            android:id="@+id/action_tourListFragment_to_discoverFragment"
-            app:destination="@id/discoverFragment" />
     </fragment>
     <fragment
         android:id="@+id/touristAttractionFragment"
-        android:name="com.acs.urbannavigator.TouristAttractionFragment"
+        android:name="com.acs.urbannavigator.ui.fragments.TouristAttractionFragment"
         android:label="Obiectiv"
         tools:layout="@layout/fragment_tourist_attraction" />
     <fragment
@@ -95,8 +92,11 @@
         android:name="com.acs.urbannavigator.ui.fragments.MuseumDetailsFragment"
         android:label="Muzeu"
         tools:layout="@layout/fragment_museum_details" >
-        <action
-            android:id="@+id/action_museumDetailsFragment_to_discoverFragment"
-            app:destination="@id/discoverFragment" />
+
     </fragment>
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.acs.urbannavigator.ui.MapsActivity"
+        android:label="Descoperă"
+        tools:layout="@layout/activity_maps" />
 </navigation>

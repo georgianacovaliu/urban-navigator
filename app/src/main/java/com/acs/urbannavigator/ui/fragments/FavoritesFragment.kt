@@ -1,11 +1,18 @@
 package com.acs.urbannavigator.ui.fragments
 
+import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import com.acs.urbannavigator.R
 import com.acs.urbannavigator.databinding.FragmentFavoritesBinding
+import com.acs.urbannavigator.databinding.MessageBoxBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class FavoritesFragment : Fragment() {
@@ -32,7 +39,24 @@ class FavoritesFragment : Fragment() {
 //
 //            Log.d("rezultat", countryItemDAO.getAll().toString())
         }
-
+        showDialog()
         return binding.root
     }
+    private fun showDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.message_box)
+        val yesBtn = dialog.findViewById(R.id.button_da_favorite) as Button
+        val noBtn = dialog.findViewById(R.id.button_nu_favorite) as Button
+        yesBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+        noBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+
+    }
+
 }

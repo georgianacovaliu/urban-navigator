@@ -1,10 +1,13 @@
 package com.acs.urbannavigator.ui.fragments
 
+import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
@@ -51,7 +54,6 @@ class MuseumsFragment : Fragment() {
     ): View? {
         binding = FragmentMuseumsBinding.inflate(inflater, container, false)
         getMuseums()
-
         return binding.root
     }
 

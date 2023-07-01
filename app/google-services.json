@@ -14,34 +14,13 @@
       },
       "oauth_client": [
         {
-          "client_id": "536863003622-j1jqmcvsdoun85c4gnfaupbeiegm7qea.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDET0v2WYFhh17ImtwAjz38BZpkjDp1R0M"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "536863003622-j1jqmcvsdoun85c4gnfaupbeiegm7qea.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:536863003622:android:b4e9e71f56f4ed32cc3c27",
-        "android_client_info": {
-          "package_name": "com.example.cityscape"
-        }
-      },
-      "oauth_client": [
+          "client_id": "536863003622-6dfe568lu97dtsa4u7bju1f5g3i12nc1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.acs.urbannavigator",
+            "certificate_hash": "4e66489aed80ca3698df562de337e8a0958dac01"
+          }
+        },
         {
           "client_id": "536863003622-j1jqmcvsdoun85c4gnfaupbeiegm7qea.apps.googleusercontent.com",
           "client_type": 3

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.countriesFragment,
                 R.id.favoritesFragment,
-                R.id.discoverFragment
+                R.id.mapsActivity
             )
         )
 

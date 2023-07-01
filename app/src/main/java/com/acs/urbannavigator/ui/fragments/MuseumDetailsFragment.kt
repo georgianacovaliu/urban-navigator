@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -45,7 +46,9 @@ class MuseumDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMuseumDetailsBinding.inflate(inflater, container, false)
-
+        binding.smallImage.setOnClickListener {
+            binding.smallImage.setColorFilter(ContextCompat.getColor(requireContext(), R.color.red))
+        }
         return binding.root
     }
 
