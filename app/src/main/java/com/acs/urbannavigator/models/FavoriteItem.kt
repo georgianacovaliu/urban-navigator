@@ -1,25 +1,22 @@
-package com.acs.urbannavigator.models.museumModel
+package com.acs.urbannavigator.models
 
 
-import com.acs.urbannavigator.models.ContentProvider
-import com.acs.urbannavigator.models.Image
-import com.acs.urbannavigator.models.Location
-import com.acs.urbannavigator.models.Reviews
-import com.google.gson.annotations.SerializedName
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-data class MuseumItem(
-    @SerializedName("content_provider")
-    val contentProvider: ContentProvider,
-    @SerializedName("images")
-    val images: List<Image>,
-    @SerializedName("location")
-    val location: Location,
-    @SerializedName("reviews")
-    val reviews: Reviews,
-    @SerializedName("summary")
-    val summary: String,
-    @SerializedName("title")
+@Entity(tableName = "favorite")
+data class FavoriteItem(
+    @PrimaryKey
+    val uuid: String,
+    @ColumnInfo(name = "title")
     val title: String,
-    @SerializedName("uuid")
-    val uuid: String
-)
+    @ColumnInfo(name = "imageUuid")
+    val imageUuid: String,
+    @ColumnInfo(name = "contentProviderUuid")
+    val contentProviderUuid: String,
+    @ColumnInfo(name = "type")
+    val type: String
+){
+    constructor() : this("", "", "", "", "")
+}

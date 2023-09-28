@@ -113,6 +113,7 @@ class TourListFragment : Fragment() {
 
         locationDAO.deleteAll()
         locationDAO.insertAll(directions)
+        navController.navigate(R.id.mapsActivity)
     }
 
     fun getBundleTour(){

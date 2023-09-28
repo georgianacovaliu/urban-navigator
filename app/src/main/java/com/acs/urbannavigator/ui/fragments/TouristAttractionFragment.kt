@@ -56,10 +56,10 @@ class TouristAttractionFragment : Fragment() {
                 mediaPlayer.seekTo(mediaPlayer.currentPosition)
                 mediaPlayer.start()
                 pause = false
-                Toast.makeText(requireContext(),"media playing", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"redare audio", Toast.LENGTH_SHORT).show()
             }else{
                 mediaPlayer.start()
-                Toast.makeText(requireContext(),"media playing", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"redare audio", Toast.LENGTH_SHORT).show()
 
             }
             initializeSeekBar()
@@ -71,7 +71,7 @@ class TouristAttractionFragment : Fragment() {
                 binding.playBtn.isEnabled = true
                 binding.pauseBtn.isEnabled = false
                 binding.stopBtn.isEnabled = false
-                Toast.makeText(requireContext(),"end", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"sfarsit audio", Toast.LENGTH_SHORT).show()
             }
         }
         // Pause the media player
@@ -82,7 +82,7 @@ class TouristAttractionFragment : Fragment() {
                 binding.playBtn.isEnabled = true
                 binding.pauseBtn.isEnabled = false
                 binding.stopBtn.isEnabled = true
-                Toast.makeText(requireContext(),"media pause", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"pauză audio", Toast.LENGTH_SHORT).show()
             }
         }
         // Stop the media player
@@ -100,7 +100,7 @@ class TouristAttractionFragment : Fragment() {
                 binding.stopBtn.isEnabled = false
                 binding.tvPass.text = ""
                 binding.tvDue.text = ""
-                Toast.makeText(requireContext(),"media stop", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"stop audio", Toast.LENGTH_SHORT).show()
             }
         }
         // Seek bar change listener

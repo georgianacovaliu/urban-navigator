@@ -133,7 +133,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val db = Room.databaseBuilder(
                 this,
                 LocalDatabase::class.java, "location"
-            ).allowMainThreadQueries().build()
+            ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
 
         val locationDAO = db.locationDao()
 

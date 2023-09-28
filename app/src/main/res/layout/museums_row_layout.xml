@@ -54,7 +54,6 @@
             android:layout_marginTop="12dp"
             android:ellipsize="end"
             android:maxLines="3"
-            android:text="rezumat"
             android:textColor="@color/descriptionColor"
             app:layout_constraintEnd_toEndOf="@+id/museum_title_textView"
             app:layout_constraintStart_toStartOf="@+id/museum_title_textView"
@@ -97,8 +96,7 @@
             app:layout_constraintStart_toStartOf="@+id/star_textView"
             app:layout_constraintTop_toTopOf="@+id/star_textView"
             app:srcCompat="@drawable/ic_heart"
-            app:tint="@color/mediumGray"
-            android:visibility="invisible"/>
+            app:tint="@color/mediumGray"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

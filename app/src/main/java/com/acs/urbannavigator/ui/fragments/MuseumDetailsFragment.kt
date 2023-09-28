@@ -15,10 +15,13 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import com.acs.urbannavigator.adapters.MuseumDetailsAdapter
 import com.acs.urbannavigator.R
+import com.acs.urbannavigator.data.database.LocalDatabase
 import com.acs.urbannavigator.data.network.ServiceBuilder
 import com.acs.urbannavigator.databinding.FragmentMuseumDetailsBinding
+import com.acs.urbannavigator.models.FavoriteItem
 import com.acs.urbannavigator.models.museumDetailsModel.MuseumDetail
 import com.squareup.picasso.Picasso
 import retrofit2.Call
@@ -87,6 +90,11 @@ class MuseumDetailsFragment : Fragment() {
                         Picasso.get().load(imagePath).into(imageView)
                     }
 
+                    binding.smallImage.setOnClickListener {
+                        binding.smallImage.setColorFilter(ContextCompat.getColor(requireContext(), R.color.red))
+                        insertFavorite(responseBody[0].uuid, responseBody[0].content[0].title, responseBody[0].content[0].images[0].uuid, responseBody[0].contentProvider.uuid)
+                    }
+
                 }
                 catch (ex: java.lang.Exception){
                     ex.printStackTrace()
@@ -100,6 +108,23 @@ class MuseumDetailsFragment : Fragment() {
         })
 
 
+    }
+
+    fun insertFavorite(uuid: String, title:String, imageUuid:String, contentProviderUuid: String){
+        val db = Room.databaseBuilder(
+            requireContext(),
+            LocalDatabase::class.java, "favorite"
+        ).allowMainThreadQueries().build()
+
+        val favoriteItemDAO = db.favoriteDao()
+        val favoriteItem = FavoriteItem(
+            uuid = uuid,
+            title = title,
+            imageUuid = imageUuid,
+            contentProviderUuid = contentProviderUuid,
+            type = "museum"
+        )
+        favoriteItemDAO.insertFavoriteItem(favoriteItem)
     }
 
     fun getBundleTour(){

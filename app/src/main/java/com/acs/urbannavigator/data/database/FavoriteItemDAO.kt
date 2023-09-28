@@ -1,21 +1,18 @@
 package com.acs.urbannavigator.data.database
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import com.acs.urbannavigator.models.museumModel.MuseumItem
+import androidx.room.*
+import com.acs.urbannavigator.models.FavoriteItem
 
 @Dao
-interface MuseumItemDAO {
+interface FavoriteItemDAO {
     @Query("SELECT * FROM favorite")
-    fun getAll(): List<MuseumItem>
+    fun getAll(): List<FavoriteItem>
 
-    @Insert
-    fun insertAll(locations: List<MuseumItem>)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertFavoriteItem(favoriteItem: FavoriteItem)
 
-    @Delete
-    fun delete(id: MuseumItem)
+    @Query("DELETE FROM favorite WHERE uuid = :uuid")
+    fun deleteEntryById(uuid: String)
 
     @Query("DELETE FROM favorite")
     fun deleteAll()
